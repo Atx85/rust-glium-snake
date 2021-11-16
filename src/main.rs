@@ -36,13 +36,16 @@ fn main() {
                     glutin::event::StartCause::Init => (),
                     _ => return,
                 },
+                glutin::event::Event::MainEventsCleared =>{
+                    game.draw(&display);
+                }
                 _ => return,
             }
-    let next_frame_time = std::time::Instant::now() +
-    std::time::Duration::from_nanos(16_666_667);
-    *control_flow = glutin::event_loop::ControlFlow::WaitUntil(next_frame_time);
+    // let next_frame_time = std::time::Instant::now() +
+    // std::time::Duration::from_nanos(16_666_667);
+    // *control_flow = glutin::event_loop::ControlFlow::WaitUntil(next_frame_time);
     
-    game.draw(&display);
+    
     });
 }
 
